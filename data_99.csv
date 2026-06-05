@@ -1,0 +1,26 @@
+group,series,occupation,median_wage,net_change,total_jobs,SOC
+Test case,Group A,Aircraft Cargo Handling Supervisors,82006.21,20,29,99-1001
+Test case,Group A,"FirstLine Supervisors of Transportation & Material Moving Workers, Exc Aircraft Cargo Handling Supervisor",93365.8,1540,1176,99-1002
+Test case,Group A,Flight Attendants,41448.68,-50,996,99-1003
+Test case,Group A,Driver/Sales Workers,44131.35,190,1401,99-1004
+Test case,Group A,Heavy and Tractor-Trailer Truck Drivers,87418.66,900,2093,99-1005
+Test case,Group A,Light Truck Drivers,54186.99,20,2592,99-1006
+Test case,Group A,"Bus Drivers, Transit and Intercity",45313.4,0,2209,99-1007
+Test case,Group B,"Motor Vehicle Operators, All Other",46331.56,10,129,99-1008
+Test case,Group B,Sailors and Marine Oilers,37016.49,-190,141,99-1009
+Test case,Group B,"Captains, Mates, and Pilots of Water Vessels",39941.92,1420,135,99-1010
+Test case,Group B,Ship Engineers,85628.17,1520,52,99-1011
+Test case,Group B,Parking Attendants,61318.23,-150,1544,99-1012
+Test case,Group B,Automotive and Watercraft Service Attendants,131160.77,-120,135,99-1013
+Test case,Group B,Traffic Technicians,68923.73,-10,129,99-1014
+Test case,Group C,Transportation Inspectors,131160.77,860,530,99-1015
+Test case,Group C,Passenger Attendants,45977.15,-40,152,99-1016
+Test case,Group D,Conveyor Operators and Tenders,65452.35,1910,30,99-1017
+Test case,Group D,Crane and Tower Operators,48802.2,130,31,99-1018
+Test case,Group D,Industrial Truck and Tractor Operators,84427.68,1620,551,99-1019
+Test case,Group D,Cleaners of Vehicles and Equipment,43383.6,2790,1482,99-1020
+Test case,Group D,"Laborers and Freight, Stock, and Material Movers, Hand",62579.16,90,6042,99-1021
+Test case,Group D,"Packers and Packagers, Hand",109775.24,110,1005,99-1022
+Test case,Group D,Stockers and Order Fillers,136042.63,50,6988,99-1023
+Test case,Group D,Refuse and Recyclable Material Collectors,35814.98,770,797,99-1024
+Test case,Group D,"Material Moving Workers, All Other",38750.65,40,94,99-1025
