@@ -213,7 +213,7 @@ function initChart(csvText, containerId = "chart-container") {
             },
           color: "#999",
           width: 1,
-          dashStyle: "Dashed",
+          dashStyle: "dot",
           zIndex: 3,
         },
       ],
