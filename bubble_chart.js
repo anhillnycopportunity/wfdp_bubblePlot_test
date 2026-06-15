@@ -182,13 +182,13 @@ function initChart(csvText, containerId = "chart-container") {
 
     xAxis: {
       title: { text: "Projected Annualized Change Rate" },
-      labels: {
-            format: '{value}%'
-        },
       //labels: {
-      //  formatter() {
-      //    return Highcharts.numberFormat(this.value, 0, ".", ",");
+      //      format: '{value}%'
       //  },
+      labels: {
+        formatter() {
+          return Highcharts.numberFormat(this.value, 0, ".", ",");
+        },
       },
      plotLines: [
         {
