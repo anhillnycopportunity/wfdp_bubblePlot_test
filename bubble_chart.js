@@ -177,7 +177,7 @@ function initChart(csvText, containerId = "chart-container") {
     },
 
     xAxis: {
-      title: { text: "Net Change" },
+      title: { text: "Projected 10-Year Net Change" },
       labels: {
         formatter() {
           return Highcharts.numberFormat(this.value, 0, ".", ",");
