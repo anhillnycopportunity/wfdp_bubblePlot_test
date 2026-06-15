@@ -201,7 +201,7 @@ function initChart(csvText, containerId = "chart-container") {
           return "$" + Highcharts.numberFormat(this.value, 0, ".", ",");
         },
       },
-      gridLineWidth: 1,
+     // gridLineWidth: 1,
       plotLines: [
         {
           value: 64590,
