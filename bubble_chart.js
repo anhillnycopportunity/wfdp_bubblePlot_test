@@ -186,16 +186,16 @@ function initChart(csvText, containerId = "chart-container") {
         formatter() {
           return Highcharts.numberFormat(this.value, 0, ".", ",");
         },
-      } // ,
-     // plotLines: [
-     //   {
-     //     value: 0,
-     //     color: "#999",
-     //     width: 1,
-     //     dashStyle: "Solid",
-     //     zIndex: 3,
-     //   },
-     // ],
+      },
+     plotLines: [
+        {
+          value: 0,
+          color: "#999",
+          width: 1,
+         dashStyle: "Solid",
+          zIndex: 3,
+        },
+      ],
     },
 
      yAxis: {
@@ -205,7 +205,7 @@ function initChart(csvText, containerId = "chart-container") {
           return "$" + Highcharts.numberFormat(this.value, 0, ".", ",");
         },
       },
-     // gridLineWidth: 1,
+      gridLineWidth: 0,
       plotLines: [
         {
           value: 64590,
