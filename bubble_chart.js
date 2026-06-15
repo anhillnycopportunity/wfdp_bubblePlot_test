@@ -229,7 +229,7 @@ function initChart(csvText, containerId = "chart-container") {
       pointFormatter() {
         return (
           `Occupation: <b>${this.name}</b><br>` +
-          `Projected 10-year Net Change: <b>{Highcharts.numberFormat(this.x, 0, ".", ",")}</b><br>` +
+          `Projected 10-year Net Change: <b>${Highcharts.numberFormat(this.x, 0, ".", ",")}</b><br>` +
           `Median Wage: <b>$${Highcharts.numberFormat(this.y, 0, ".", ",")}</b><br>` +
           `Total Current Jobs: <b>${Highcharts.numberFormat(this.z, 0, ".", ",")}</b>`
         );
