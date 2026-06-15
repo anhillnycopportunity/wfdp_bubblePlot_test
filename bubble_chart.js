@@ -9,25 +9,28 @@
  * - The CSV is fetched separately and its text is passed to `initChart(csvText)`.
  *   See the integration snippet at the bottom for a typical usage pattern.
  *
- * CSV column layout (1-indexed)
+ * CSV column layout (JS indexed)
  * ─────────────────────────────
- *  1  group        – ignored here
- *  2  series       – colour/series grouping  (e.g. "Group A")
- *  3  occupation   – point label / tooltip name
- *  4  median_wage  – y axis
- *  5  net_change   – x axis
- *  6  total_jobs   – bubble size (z value)
- *  7  SOC          – ignored here
+ *  0  group        – ignored here
+ *  1  series       – colour/series grouping  (e.g. "Group A")
+ *  2  occupation   – point label / tooltip name
+ *  3  median_wage  – y axis
+ *  4  net_change   – IGNORE
+ *  5  current_jobs   – bubble size (z value)
+ *  6  SOC          – ignored here
+ *  7  annualized_change    – new x-axis
+ *  8  job_change_note      -- hopefully feed into tooltip
  */
 
 // ─── Colour palette (one colour per series) ──────────────────────────────────
 const SERIES_COLORS = [
-  "#2563eb", // Group A – blue
-  "#16a34a", // Group B – green
-  "#dc2626", // Group C – red
-  "#d97706", // Group D – amber
-  "#7c3aed", // Group E – violet  (extend as needed)
-  "#0891b2", // Group F – cyan
+  // Currently in order across 3 categories. Comment out to coordinate
+  "#3f5bbf", // Apprenticeship
+  "#e76e68", // Long-term on-the-job training 
+  "#ffbe46", // Moderate-term on-the-job training
+  "#94c747", // None
+  "#b371c1", // Short-term on-the-job training  
+  "#0891b2", // extra... 
 ];
 
 /**
@@ -55,9 +58,13 @@ function parseCsv(csvText) {
     const medianWage  = parseFloat(cols[3]);
     const netChange   = parseFloat(cols[4]);
     const currentJobs   = parseFloat(cols[5]);
+    const annualizedRate   = parseFloat(cols[7]);
+    const jobChangeNote  = cols[8]?.trim();
+
+    //console.log(jobChangeNote); 
 
     // Skip rows with missing / invalid values
-    if (!seriesName || isNaN(medianWage) || isNaN(netChange) || isNaN(currentJobs)) {
+    if (!seriesName || isNaN(medianWage) || isNaN(netChange) || isNaN(annualizedRate) || isNaN(currentJobs)) {
       continue;
     }
 
@@ -67,9 +74,10 @@ function parseCsv(csvText) {
 
     seriesMap.get(seriesName).push({
       name: occupation || "",
-      x: netChange,
+      x: annualizedRate,
       y: medianWage,
       z: currentJobs,
+      jobChangeNote: jobChangeNote || "",  
     });
   }
 
@@ -177,21 +185,24 @@ function initChart(csvText, containerId = "chart-container") {
     },
 
     xAxis: {
-      title: { text: "Projected 10-Year Net Change" },
+      title: { text: "Projected Annualized Change Rate" },
       labels: {
+       // formatter() {
+       //   return Highcharts.numberFormat(this.value, 0, ".", ",");
+       // },
         formatter() {
-          return Highcharts.numberFormat(this.value, 0, ".", ",");
+          return Highcharts.numberFormat(this.value, 2) + "%";
         },
-      } // ,
-     // plotLines: [
-     //   {
-     //     value: 0,
-     //     color: "#999",
-     //     width: 1,
-     //     dashStyle: "Solid",
-     //     zIndex: 3,
-     //   },
-     // ],
+      },
+     plotLines: [
+        {
+          value: 0,
+          color: "#999",
+          width: 1,
+         dashStyle: "Solid",
+          zIndex: 3,
+        },
+      ],
     },
 
      yAxis: {
@@ -201,7 +212,7 @@ function initChart(csvText, containerId = "chart-container") {
           return "$" + Highcharts.numberFormat(this.value, 0, ".", ",");
         },
       },
-     // gridLineWidth: 1,
+      gridLineWidth: 0,
       plotLines: [
         {
           value: 64590,
@@ -225,11 +236,16 @@ function initChart(csvText, containerId = "chart-container") {
       pointFormatter() {
         return (
           `Occupation: <b>${this.name}</b><br>` +
-          `Projected 10-year Net Change: <b>{Highcharts.numberFormat(this.x, 0, ".", ",")}</b><br>` +
+          `Annualized Rate Change: <b>${Highcharts.numberFormat(this.x, 2)}%</b><br>` +
+          // `Projected 10-year Net Change: <b>${Highcharts.numberFormat(this.x, 0, ".", ",")}</b><br>` +
           `Median Wage: <b>$${Highcharts.numberFormat(this.y, 0, ".", ",")}</b><br>` +
-          `Total Current Jobs: <b>${Highcharts.numberFormat(this.z, 0, ".", ",")}</b>`
+          `Total Current Jobs: <b>${Highcharts.numberFormat(this.z, 0, ".", ",")}</b><br>` +
+          (this.jobChangeNote ? `<br><i>Jobs for &quot;${this.name}&quot; are expected to ${this.jobChangeNote}</i>` : "")  // ← add this line
         );
       },
+      style: {
+        width: '400px'  // Set your desired max width
+      }
     },
 
     plotOptions: {
@@ -252,21 +268,3 @@ function initChart(csvText, containerId = "chart-container") {
   });
 }
 
-// ─── Integration snippet ──────────────────────────────────────────────────────
-//
-// In your HTML, load Highcharts then fetch the CSV and call initChart():
-//
-//   <div id="chart-container" style="width:100%; height:600px;"></div>
-//
-//   <script src="https://code.highcharts.com/highcharts.js"></script>
-//   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-//   <script src="https://code.highcharts.com/highcharts-more.js"></script>  <!-- required for bubble -->
-//   <script src="bubble_chart.js"></script>
-//   <script>
-//     fetch("data_99.csv")
-//       .then(r => r.text())
-//       .then(csv => initChart(csv, "chart-container"))
-//       .catch(err => console.error("Failed to load CSV:", err));
-//   </script>
-//
-// ─────────────────────────────────────────────────────────────────────────────
