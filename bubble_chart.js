@@ -206,10 +206,10 @@ function initChart(csvText, containerId = "chart-container") {
     
     tooltip: {
       useHTML: true,
-      headerFormat: "<b>{series.name}</b><br>",
+      headerFormat: "On the job training: <b>{series.name}</b><br>",
       pointFormatter() {
         return (
-          `<br><b>${this.name}</b><br>` +
+          `Occupation: <br><b>${this.name}</b><br>` +
           `Median Wage: <b>$${Highcharts.numberFormat(this.x, 0, ".", ",")}</b><br>` +
           `Projected 10-year Net Change: <b>${Highcharts.numberFormat(this.y, 0, ".", ",")}</b><br>` +
           `Total Current Jobs: <b>${Highcharts.numberFormat(this.z, 0, ".", ",")}</b>`
