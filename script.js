@@ -14,9 +14,9 @@
  *  1  group        – ignored here
  *  2  series       – colour/series grouping  (e.g. "Group A")
  *  3  occupation   – point label / tooltip name
- *  4  median_wage  – x axis
- *  5  net_change   – y axis
- *  6  total_jobs   – bubble size (z value)
+ *  4  median_wage  – y axis
+ *  5  net_change   – x axis
+ *  6  current_jobs   – bubble size (z value)
  *  7  SOC          – ignored here
  */
 
@@ -54,10 +54,10 @@ function parseCsv(csvText) {
     const occupation  = cols[2]?.trim();
     const medianWage  = parseFloat(cols[3]);
     const netChange   = parseFloat(cols[4]);
-    const totalJobs   = parseFloat(cols[5]);
+    const currentJobs   = parseFloat(cols[5]);
 
     // Skip rows with missing / invalid values
-    if (!seriesName || isNaN(medianWage) || isNaN(netChange) || isNaN(totalJobs)) {
+    if (!seriesName || isNaN(medianWage) || isNaN(netChange) || isNaN(currentJobs)) {
       continue;
     }
 
@@ -67,9 +67,9 @@ function parseCsv(csvText) {
 
     seriesMap.get(seriesName).push({
       name: occupation || "",
-      x: medianWage,
-      y: netChange,
-      z: totalJobs,
+      x: netChange,
+      y: medianWage,
+      z: currentJobs,
     });
   }
 
@@ -161,7 +161,7 @@ function initChart(csvText, containerId = "chart-container") {
     },
 
     subtitle: {
-      text: "Bubble size = total jobs. Click legend items to toggle series.",
+      text: "Bubble size = current jobs as of 2022. Click legend items to toggle series.",
     },
 
     legend: {
@@ -171,22 +171,12 @@ function initChart(csvText, containerId = "chart-container") {
     accessibility: {
       point: {
         valueDescriptionFormat:
-          "{index}. {point.name}: Median wage ${point.x:,.0f}, " +
-          "net change {point.y}, total jobs {point.z}.",
+          "{index}. {point.name}: net change {point.x}, " +
+          " Median wage ${point.y:,.0f}, total jobs {point.z}.",
       },
     },
 
     xAxis: {
-      title: { text: "Median Wage ($)" },
-      labels: {
-        formatter() {
-          return "$" + Highcharts.numberFormat(this.value, 0, ".", ",");
-        },
-      },
-      gridLineWidth: 1,
-    },
-
-    yAxis: {
       title: { text: "Net Change" },
       labels: {
         formatter() {
@@ -203,15 +193,26 @@ function initChart(csvText, containerId = "chart-container") {
         },
       ],
     },
+    
+    yAxis: {
+      title: { text: "Median Wage ($)" },
+      labels: {
+        formatter() {
+          return "$" + Highcharts.numberFormat(this.value, 0, ".", ",");
+        },
+      },
+      gridLineWidth: 1,
+    },
 
+    
     tooltip: {
       useHTML: true,
       headerFormat: "<b>{series.name}</b><br>",
       pointFormatter() {
         return (
           `<b>${this.name}</b><br>` +
-          `Median Wage: <b>$${Highcharts.numberFormat(this.x, 0, ".", ",")}</b><br>` +
-          `Net Change: <b>${Highcharts.numberFormat(this.y, 0, ".", ",")}</b><br>` +
+          `Median Wage: <b>$${Highcharts.numberFormat(this.y, 0, ".", ",")}</b><br>` +
+          `Net Change: <b>${Highcharts.numberFormat(this.x, 0, ".", ",")}</b><br>` +
           `Total Jobs: <b>${Highcharts.numberFormat(this.z, 0, ".", ",")}</b>`
         );
       },
