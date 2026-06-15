@@ -1,4 +1,4 @@
-group,series,occupation,median_wage,net_change,total_jobs,SOC
+group,series,occupation,median_wage,net_change,current_jobs,SOC
 Test case,Group A,Aircraft Cargo Handling Supervisors,82006.21,20,29,99-1001
 Test case,Group A,"FirstLine Supervisors of Transportation & Material Moving Workers, Exc Aircraft Cargo Handling Supervisor",93365.8,1540,1176,99-1002
 Test case,Group A,Flight Attendants,41448.68,-50,996,99-1003
