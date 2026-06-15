@@ -188,7 +188,7 @@ function initChart(csvText, containerId = "chart-container") {
           value: 0,
           color: "#999",
           width: 1,
-          dashStyle: "Dash",
+          dashStyle: "Solid",
           zIndex: 3,
         },
       ],
@@ -202,6 +202,21 @@ function initChart(csvText, containerId = "chart-container") {
         },
       },
       gridLineWidth: 1,
+      plotLines: [
+        {
+          value: 64590,
+          label: {
+            align: 'right',
+            style: { fontStyle: 'italic' },
+            text: 'Citywide Median Wage ($64,590)',
+            x: 0.5
+            },
+          color: "#999",
+          width: 1,
+          dashStyle: "Dashed",
+          zIndex: 3,
+        },
+      ],
     },
     
     tooltip: {
