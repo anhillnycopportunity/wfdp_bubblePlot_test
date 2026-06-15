@@ -157,11 +157,11 @@ function initChart(csvText, containerId = "chart-container") {
     },
 
     title: {
-      text: "Slow Growth, High Quality Occupations: Occupations with low barriers to entry",
+      text: "Slow Growth, High Quality Occupational Sectors: Transportation and Material Moving",
     },
 
     subtitle: {
-      text: "Bubble size = current number of jobs (2022). Click legend items to toggle series.",
+      text: "Bubble size reflects current number of jobs (2022).",
     },
 
     legend: {
