@@ -15,9 +15,11 @@
  *  2  series       – colour/series grouping  (e.g. "Group A")
  *  3  occupation   – point label / tooltip name
  *  4  median_wage  – y axis
- *  5  net_change   – x axis
- *  6  total_jobs   – bubble size (z value)
+ *  5  net_change   – IGNORE
+ *  6  current_jobs   – bubble size (z value)
  *  7  SOC          – ignored here
+ *  8  annualized_change    – new x-axis
+ *  9  job_change_note      -- hopefully feed into tooltip
  */
 
 // ─── Colour palette (one colour per series) ──────────────────────────────────
@@ -55,9 +57,11 @@ function parseCsv(csvText) {
     const medianWage  = parseFloat(cols[3]);
     const netChange   = parseFloat(cols[4]);
     const currentJobs   = parseFloat(cols[5]);
+    const annualizedRate   = parseFloat(cols[8]);
+    const jobChangeNote  = cols[9]?.trim();
 
     // Skip rows with missing / invalid values
-    if (!seriesName || isNaN(medianWage) || isNaN(netChange) || isNaN(currentJobs)) {
+    if (!seriesName || isNaN(medianWage) || isNaN(netChange) || isNaN(annualizedRate) || isNaN(currentJobs)) {
       continue;
     }
 
@@ -67,7 +71,7 @@ function parseCsv(csvText) {
 
     seriesMap.get(seriesName).push({
       name: occupation || "",
-      x: netChange,
+      x: annualizedRate,
       y: medianWage,
       z: currentJobs,
     });
@@ -177,7 +181,7 @@ function initChart(csvText, containerId = "chart-container") {
     },
 
     xAxis: {
-      title: { text: "Projected 10-Year Net Change" },
+      title: { text: "Projected Annualized Change Rate" },
       labels: {
         formatter() {
           return Highcharts.numberFormat(this.value, 0, ".", ",");
