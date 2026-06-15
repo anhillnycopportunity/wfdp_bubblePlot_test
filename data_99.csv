@@ -1,26 +1,23 @@
-group,series,occupation,median_wage,net_change,current_jobs,SOC
-Test case,Group A,Aircraft Cargo Handling Supervisors,82006.21,20,29,99-1001
-Test case,Group A,"FirstLine Supervisors of Transportation & Material Moving Workers, Exc Aircraft Cargo Handling Supervisor",93365.8,1540,1176,99-1002
-Test case,Group A,Flight Attendants,41448.68,-50,996,99-1003
-Test case,Group A,Driver/Sales Workers,44131.35,190,1401,99-1004
-Test case,Group A,Heavy and Tractor-Trailer Truck Drivers,87418.66,900,2093,99-1005
-Test case,Group A,Light Truck Drivers,54186.99,20,2592,99-1006
-Test case,Group A,"Bus Drivers, Transit and Intercity",45313.4,0,2209,99-1007
-Test case,Group B,"Motor Vehicle Operators, All Other",46331.56,10,129,99-1008
-Test case,Group B,Sailors and Marine Oilers,37016.49,-190,141,99-1009
-Test case,Group B,"Captains, Mates, and Pilots of Water Vessels",39941.92,1420,135,99-1010
-Test case,Group B,Ship Engineers,85628.17,1520,52,99-1011
-Test case,Group B,Parking Attendants,61318.23,-150,1544,99-1012
-Test case,Group B,Automotive and Watercraft Service Attendants,131160.77,-120,135,99-1013
-Test case,Group B,Traffic Technicians,68923.73,-10,129,99-1014
-Test case,Group C,Transportation Inspectors,131160.77,860,530,99-1015
-Test case,Group C,Passenger Attendants,45977.15,-40,152,99-1016
-Test case,Group D,Conveyor Operators and Tenders,65452.35,1910,30,99-1017
-Test case,Group D,Crane and Tower Operators,48802.2,130,31,99-1018
-Test case,Group D,Industrial Truck and Tractor Operators,84427.68,1620,551,99-1019
-Test case,Group D,Cleaners of Vehicles and Equipment,43383.6,2790,1482,99-1020
-Test case,Group D,"Laborers and Freight, Stock, and Material Movers, Hand",62579.16,90,6042,99-1021
-Test case,Group D,"Packers and Packagers, Hand",109775.24,110,1005,99-1022
-Test case,Group D,Stockers and Order Fillers,136042.63,50,6988,99-1023
-Test case,Group D,Refuse and Recyclable Material Collectors,35814.98,770,797,99-1024
-Test case,Group D,"Material Moving Workers, All Other",38750.65,40,94,99-1025
+"group","series","occupation","median_wage","net_change","current_jobs","SOC"
+"Transportation and Material Moving","None","Aircraft Cargo Handling Supervisors",67299.18,-10,270,"53-1041"
+"Transportation and Material Moving","None","FirstLine Supervisors of Transportation & Material Moving Workers, Exc Aircraft Cargo Handling Supervisor",68923.73,860,10570,"53-1047"
+"Transportation and Material Moving","Moderate-term on-the-job training","Flight Attendants",131160.77,-40,7650,"53-2031"
+"Transportation and Material Moving","Short-term on-the-job training","Driver/Sales Workers",45977.15,1910,10650,"53-3031"
+"Transportation and Material Moving","Short-term on-the-job training","Light Truck Drivers",48802.2,1620,22620,"53-3033"
+"Transportation and Material Moving","Moderate-term on-the-job training","Bus Drivers, Transit and Intercity",84427.68,2790,13850,"53-3052"
+"Transportation and Material Moving","Short-term on-the-job training","Motor Vehicle Operators, All Other",43383.6,90,760,"53-3099"
+"Transportation and Material Moving","Moderate-term on-the-job training","Sailors and Marine Oilers",62579.16,110,1180,"53-5011"
+"Transportation and Material Moving","Short-term on-the-job training","Parking Attendants",35814.98,1540,8960,"53-6021"
+"Transportation and Material Moving","Short-term on-the-job training","Automotive and Watercraft Service Attendants",38750.65,-50,950,"53-6031"
+"Transportation and Material Moving","Moderate-term on-the-job training","Traffic Technicians",82006.21,190,930,"53-6041"
+"Transportation and Material Moving","Moderate-term on-the-job training","Transportation Inspectors",93365.8,900,4540,"53-6051"
+"Transportation and Material Moving","Short-term on-the-job training","Passenger Attendants",41448.68,20,900,"53-6061"
+"Transportation and Material Moving","Short-term on-the-job training","Conveyor Operators and Tenders",44131.35,0,380,"53-7011"
+"Transportation and Material Moving","Moderate-term on-the-job training","Crane and Tower Operators",87418.66,10,290,"53-7021"
+"Transportation and Material Moving","Short-term on-the-job training","Industrial Truck and Tractor Operators",54186.99,-190,5990,"53-7051"
+"Transportation and Material Moving","Short-term on-the-job training","Cleaners of Vehicles and Equipment",45313.4,1420,9450,"53-7061"
+"Transportation and Material Moving","Short-term on-the-job training","Laborers and Freight, Stock, and Material Movers, Hand",46331.56,1520,44850,"53-7062"
+"Transportation and Material Moving","Short-term on-the-job training","Packers and Packagers, Hand",37016.49,-150,7190,"53-7064"
+"Transportation and Material Moving","Short-term on-the-job training","Stockers and Order Fillers",39941.92,-120,43780,"53-7065"
+"Transportation and Material Moving","Short-term on-the-job training","Refuse and Recyclable Material Collectors",85628.17,770,5470,"53-7081"
+"Transportation and Material Moving","Short-term on-the-job training","Material Moving Workers, All Other",61318.23,40,760,"53-7199"
